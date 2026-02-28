@@ -60,7 +60,7 @@
       /* Misc Colors */
       --border: oklch(89.00% 0.0080 119.00);
       --separator: oklch(82.00% 0.0080 119.00);
-      --focus: oklch(93.70% 0.2160 119.00);
+      --focus: oklch(72.00% 0.0060 119.00);
       --link: oklch(0.50 0.1500 119.00);
 
       /* Shadows */
@@ -129,7 +129,7 @@
       /* Misc Colors */
       --border: oklch(25.00% 0.0200 119.00);
       --separator: oklch(40.00% 0.0200 119.00);
-      --focus: oklch(93.70% 0.2160 119.00);
+      --focus: oklch(45.00% 0.0100 119.00);
       --link: oklch(0.80 0.1800 119.00);
 
       /* Shadows */

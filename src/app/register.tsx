@@ -77,6 +77,7 @@ export default function Register() {
               <TextField isInvalid={!!errors.email}>
                 <Label>{t('REGISTER_EMAIL_LABEL')}</Label>
                 <Input
+                  className="border-border focus:border-border"
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
@@ -99,6 +100,7 @@ export default function Register() {
               <TextField isInvalid={!!errors.password}>
                 <Label>{t('REGISTER_PASSWORD_LABEL')}</Label>
                 <Input
+                  className="border-border focus:border-border"
                   ref={passwordRef}
                   value={value}
                   onChangeText={onChange}
@@ -120,6 +122,7 @@ export default function Register() {
               <TextField isInvalid={!!errors.confirmPassword}>
                 <Label>{t('REGISTER_CONFIRM_PASSWORD_LABEL')}</Label>
                 <Input
+                  className="border-border focus:border-border"
                   ref={confirmPasswordRef}
                   value={value}
                   onChangeText={onChange}

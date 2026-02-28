@@ -70,6 +70,7 @@ export default function Login() {
               <TextField isInvalid={!!errors.email}>
                 <Label>{t('LOGIN_EMAIL_LABEL')}</Label>
                 <Input
+                  className="border-border focus:border-border"
                   value={value}
                   onChangeText={onChange}
                   onBlur={onBlur}
@@ -95,6 +96,7 @@ export default function Login() {
                 <TextField isInvalid={!!errors.password}>
                   <Label>{t('LOGIN_PASSWORD_LABEL')}</Label>
                   <Input
+                    className="border-border focus:border-border"
                     ref={passwordRef}
                     value={value}
                     onChangeText={onChange}

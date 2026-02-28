@@ -66,6 +66,7 @@ export default function ForgotPassword() {
             <TextField isInvalid={!!errors.email}>
               <Label>{t('FORGOT_EMAIL_LABEL')}</Label>
               <Input
+                className="border-border focus:border-border"
                 value={value}
                 onChangeText={onChange}
                 onBlur={onBlur}
