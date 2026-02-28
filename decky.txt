@@ -1,0 +1,5 @@
+Bu bir mobile app ismi Decky, chrome extensionu var birde. Bununla birlikte insanlar youtube, netflix, amazon prime, veya screenshotlar
+uzerinden secmis olduklari kelimleri vocublarylerine ekleyip flashcard gibi kullanabiliyorlar.
+ya da quiz falan yapabiliyorlar. Telif haklarindan dolayi bu sirketlerin isimlerini mobile appimde geciremiyorum.
+Bu bir language learnin app. Ayni zamanda vocublarylerini gelistirebiliyor insanlar. 
+Translation dosyalarini yazarken lutfen bunlara dikkat ederekten yaz. 

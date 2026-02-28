@@ -40,6 +40,8 @@
       --field-foreground: oklch(21.03% 0.0059 155.00);
       --field-placeholder: var(--muted);
       --field-border: transparent;
+      --field-border-focus: var(--field-border);
+      --field-focus: transparent;
 
       /* Status Colors - Natural, organic palette */
       --success: oklch(73.29% 0.1982 138.95);
@@ -113,6 +115,8 @@
       --field-foreground: oklch(99.11% 0.0000 0.00);
       --field-placeholder: var(--muted);
       --field-border: transparent;
+      --field-border-focus: var(--field-border);
+      --field-focus: transparent;
 
       /* Status Colors - Luminous dark mode palette */
       --success: oklch(73.29% 0.1982 138.95);

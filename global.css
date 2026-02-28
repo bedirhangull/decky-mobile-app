@@ -5,6 +5,7 @@
 @import './themes/lavander.css';
 @import './themes/mint.css';
 @import './themes/sky.css';
+@import './themes/decky.css';
 
 @source './node_modules/heroui-native/lib';
 
@@ -15,8 +16,10 @@
       --font-medium: 'Inter-Medium';
       --font-semibold: 'Inter-SemiBold';
       --font-bold: 'Inter-Bold';
-      
+
       --radius: 0.5rem;
+      --field-border-focus: var(--field-border);
+      --field-focus: transparent;
     }
 
     @variant dark {
@@ -26,6 +29,8 @@
       --font-bold: 'Inter-Bold';
 
       --radius: 0.5rem;
+      --field-border-focus: var(--field-border);
+      --field-focus: transparent;
     }
   }
 }

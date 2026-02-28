@@ -1,0 +1,180 @@
+import { Button, FieldError, Input, Label, TextField } from 'heroui-native';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { useTranslation } from 'react-i18next';
+import { Image, Pressable, Text, TextInput, View } from 'react-native';
+import { useRef } from 'react';
+import { router } from 'expo-router';
+import { useCSSVariable } from 'uniwind';
+import { PageProvider } from '@/src/components/PageProvider';
+
+const registerSchema = z
+  .object({
+    email: z.email(),
+    password: z.string().min(8, { message: 'Password must be at least 8 characters' }),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
+  });
+
+type RegisterForm = z.infer<typeof registerSchema>;
+
+export default function Register() {
+  const { t } = useTranslation();
+  const foregroundColor = String(useCSSVariable('--foreground') ?? '#0f1a00');
+  const passwordRef = useRef<TextInput>(null);
+  const confirmPasswordRef = useRef<TextInput>(null);
+
+  const { control, handleSubmit, formState: { errors } } = useForm<RegisterForm>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: { email: '', password: '', confirmPassword: '' },
+  });
+
+  const onSubmit = (data: RegisterForm) => {
+    // TODO: auth API call
+    console.log(data);
+  };
+
+  return (
+    <PageProvider scrollable>
+
+      {/* Back Button */}
+      <View className="pt-2">
+        <Pressable className='my-6' onPress={() => router.back()}>
+          <Ionicons name="chevron-back" size={24} color={foregroundColor} />
+        </Pressable>
+      </View>
+
+      <View className="py-6 gap-8">
+
+        {/* Logo + Header */}
+        <View className="gap-4">
+          <Image
+            source={require('@/assets/logo.png')}
+            className="h-[48px] w-[48px] rounded-xl"
+            resizeMode="contain"
+          />
+          <View className="gap-1">
+            <Text className="text-foreground text-2xl font-bold">
+              {t('REGISTER_TITLE')}
+            </Text>
+            <Text className="text-muted text-sm">
+              {t('REGISTER_DESCRIPTION')}
+            </Text>
+          </View>
+        </View>
+
+        {/* Form */}
+        <View className="gap-4">
+          <Controller
+            control={control}
+            name="email"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextField isInvalid={!!errors.email}>
+                <Label>{t('REGISTER_EMAIL_LABEL')}</Label>
+                <Input
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  autoComplete="email"
+                  placeholder={t('REGISTER_EMAIL_PLACEHOLDER')}
+                  returnKeyType="next"
+                  onSubmitEditing={() => passwordRef.current?.focus()}
+                />
+                {errors.email && <FieldError>{errors.email.message}</FieldError>}
+              </TextField>
+            )}
+          />
+
+          <Controller
+            control={control}
+            name="password"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextField isInvalid={!!errors.password}>
+                <Label>{t('REGISTER_PASSWORD_LABEL')}</Label>
+                <Input
+                  ref={passwordRef}
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  secureTextEntry
+                  placeholder={t('REGISTER_PASSWORD_PLACEHOLDER')}
+                  returnKeyType="next"
+                  onSubmitEditing={() => confirmPasswordRef.current?.focus()}
+                />
+                {errors.password && <FieldError>{errors.password.message}</FieldError>}
+              </TextField>
+            )}
+          />
+
+          <Controller
+            control={control}
+            name="confirmPassword"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextField isInvalid={!!errors.confirmPassword}>
+                <Label>{t('REGISTER_CONFIRM_PASSWORD_LABEL')}</Label>
+                <Input
+                  ref={confirmPasswordRef}
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  secureTextEntry
+                  placeholder={t('REGISTER_CONFIRM_PASSWORD_PLACEHOLDER')}
+                  returnKeyType="done"
+                  onSubmitEditing={handleSubmit(onSubmit)}
+                />
+                {errors.confirmPassword && (
+                  <FieldError>{errors.confirmPassword.message}</FieldError>
+                )}
+              </TextField>
+            )}
+          />
+        </View>
+
+        {/* Create Account Button */}
+        <Button className="bg-accent w-full" onPress={handleSubmit(onSubmit)}>
+          <Button.Label
+            style={{ fontWeight: 'bold' }}
+            className="text-accent-foreground font-bold"
+          >
+            {t('REGISTER_BUTTON')}
+          </Button.Label>
+        </Button>
+
+        {/* Or Divider */}
+        <View className="flex-row items-center gap-3">
+          <View className="flex-1 h-px bg-border" />
+          <Text className="text-muted text-sm">{t('AUTH_OR')}</Text>
+          <View className="flex-1 h-px bg-border" />
+        </View>
+
+        {/* Apple Button */}
+        <Button className="bg-black w-full" onPress={() => {}}>
+          <FontAwesome name="apple" size={22} color="white" />
+          <Button.Label className="text-white font-semibold">{t('AUTH_APPLE')}</Button.Label>
+        </Button>
+
+        {/* Terms */}
+        <Text className="text-muted text-xs text-center leading-5">
+          {t('REGISTER_TERMS')}
+        </Text>
+
+        {/* Login Link */}
+        <View className="flex-row items-center justify-center">
+          <Text className="text-muted text-sm">{t('REGISTER_HAVE_ACCOUNT')} </Text>
+          <Pressable onPress={() => router.push('/login')}>
+            <Text className="text-link text-sm font-semibold">
+              {t('REGISTER_LOGIN_LINK')}
+              </Text>
+            </Pressable>
+          </View>
+      </View>
+    </PageProvider>
+  );
+}

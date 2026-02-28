@@ -40,6 +40,8 @@
       --field-foreground: oklch(21.03% 0.0059 225.00);
       --field-placeholder: var(--muted);
       --field-border: transparent;
+      --field-border-focus: var(--field-border);
+      --field-focus: transparent;
 
       /* Status Colors - Clean, professional palette */
       --success: oklch(73.29% 0.1954 147.35);
@@ -113,6 +115,8 @@
       --field-foreground: oklch(99.11% 0.0000 0.00);
       --field-placeholder: var(--muted);
       --field-border: transparent;
+      --field-border-focus: var(--field-border);
+      --field-focus: transparent;
 
       /* Status Colors - Vibrant night palette */
       --success: oklch(73.29% 0.1954 147.35);

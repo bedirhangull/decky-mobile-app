@@ -1,0 +1,3 @@
+saga sola firlatma kartlari -> https://makeitanimated.dev/animations/slack-catch-up-cards-swipe-animation
+feature scroll -> https://makeitanimated.dev/animations/fuse-info-cards-carousel-animation
+qr okutma entegrasyon -> https://www.animatereactnative.com/post/qrcode-scanner-bounding-box
