@@ -1,0 +1,11 @@
+- deck icin style secimi falan yaptir ona gore image olusturabilir
+
+
+- paywalls
+- 3 tane daha paywall yapilmasi gerekiyor
+- limited paywall tam olmadi
+
+- x button gelmesi gerekiyor x buttonu sag ust kose veya sol ust lucide react kullan.
+- app of the year degil de best vocublary improving app tarzinda bir sey olabilir.
+- liner gradeienti daha iyi verebiliriz alt kisimla olan baglantisinin bu kadar belirgin olmasina gerek yok daha smooth
+- daha iyi bir ui ux olabilir ama sayfanin alt kismi button ve avatars kismi cok iyi orayi degistirme 

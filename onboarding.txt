@@ -1,0 +1,60 @@
+Decky icin bir onboarding sayfasi yapalim. Kullanici register, login buttonuna bastiktan sonra onboarding ekranina redirect yapabiliriz .Progress bar olacak kucuk animasyonlar ekleyebilirsin. Kullanicidan aldigin bilgileri bir statede tutmayi unutma. Type hatasi yapma.
+Bayraklar dil icin bayraklar kullanabilirsin. Translation dosyasi eksik olmasi eklemeyi unutma
+
+1. Sayfa 1:
+- Logo
+- Baslik: "Welcome to Decky"
+- Aciklama: "Decky ile yeni diller ogrenmeye baslayalim"
+- Buton: "Next"
+
+2. Sayfa 2:
+- Logo
+- Baslik: "Hedef dilinizi seçin"
+- Aciklama: "Hedef dilinizi seçerek yeni diller ogrenmeye baslayalim"
+- Buton: "Next"
+
+3. Sayfa 3: - Empty state just congrats to user and say that they are one of the 100.000+ users who have started learning {{dil}} with Decky.
+- Logo
+- Baslik: "Tebrikler!"
+- Aciklama: "Toplamda 100.000+ kisi zaten Decky'yi kullanarak {{dil}} ogrenmeye basladi."
+- Buton: "Next"
+
+4. Sayfa 4:
+- Logo
+- Baslik: "{{dil}} ogrenmeye baslayalim. Hangi seviyede oldugunuzu belirtin."
+- Aciklama: "Decky ile {{dil}} ogrenmeye baslayalim"
+- Buton: "Next"
+
+5. Sayfa 5:
+- Logo
+- Baslik: "Mukemmel! Decky'den once hangi dil ogrenme uygulamalari kullandiniz?"
+- Aciklama: "Bu bilgileri kullanarak Decky'yi daha iyi hale getirebiliriz."
+options:
+- "Duolingo"
+- "Preply"
+- "Memrise"
+- "Anki"
+- "Other"
+- Buton: "Next"
+
+6. Sayfay 6
+- Logo
+- Baslik: "{{old_app_name}} iyi bir tercih ama"
+- Aciklama: "Decky'yi kullanarak {{dil}} daha kisa surede ve daha verimli bir sekilde ogrenmeye baslayabilirsin."
+- Buton: "Next"
+
+7. Sayfa 7:
+- Logo
+- Baslik: "Simdi ise Decky'yi kullanan kullanicimizin chartina bakalim"
+- Aciklama: "<burada bir chart gosterilecek {{old_app_name}} ile karsilastirma yapilacak ve decky onde olacak sanki daha kisa surede ogrenilmis gibi}>"
+- Buton: "Next"
+
+8. Sayfa 8
+- Logo 
+- senin icin deckyi ozellistiriyoruz burada sanki ozellistirme yapiyormusuz gibi gosterecegiz 2 3 saniye sonra next buttonu belirecek ve konfetiler patlayacak!
+
+9. Sayfa 9:
+- Logo
+- Baslik: "Hadi {{dil}} ogrenmeye baslayalim."
+- Aciklama: "Simdi ise Decky'yi kullanamya baslayabilirsin!"
+- Buton: "Get Started"

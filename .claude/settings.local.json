@@ -4,7 +4,11 @@
       "Bash(npx skills add uni-stack/uniwind --yes)",
       "WebFetch(domain:v3.heroui.com)",
       "Bash(npm install react-hook-form zod @hookform/resolvers)",
-      "Bash(node -e \"const { z } = require\\(''/Users/bedirhan/decky-mobile-app/node_modules/zod''\\); console.log\\(typeof z.email\\)\")"
+      "Bash(node -e \"const { z } = require\\(''/Users/bedirhan/decky-mobile-app/node_modules/zod''\\); console.log\\(typeof z.email\\)\")",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(node -e \":*)",
+      "Bash(xargs cat)",
+      "Bash(ls /Users/bedirhan/decky-mobile-app/src/app/\\\\\\(tabs\\\\\\)/)"
     ]
   }
 }

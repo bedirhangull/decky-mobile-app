@@ -15,7 +15,15 @@ export default function RootLayout() {
       <KeyboardProvider>
         <HeroUINativeProvider>
           <View className="flex-1 bg-background">
-            <Stack screenOptions={{ headerShown: false }} />
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="index" />
+              <Stack.Screen name="login" />
+              <Stack.Screen name="register" />
+              <Stack.Screen name="forgot-password" />
+              <Stack.Screen name="onboarding" />
+              <Stack.Screen name="streak" />
+              <Stack.Screen name="(tabs)" />
+            </Stack>
           </View>
         </HeroUINativeProvider>
       </KeyboardProvider>

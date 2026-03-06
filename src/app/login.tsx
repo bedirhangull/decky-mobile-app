@@ -28,8 +28,8 @@ export default function Login() {
   });
 
   const onSubmit = (data: LoginForm) => {
-    // TODO: auth API call
     console.log(data);
+    router.push('/onboarding');
   };
 
   return (
@@ -138,7 +138,7 @@ export default function Login() {
         </View>
 
         {/* Apple Button */}
-        <Button className="bg-black w-full" onPress={() => {}}>
+        <Button className="bg-black w-full" onPress={() => {router.push('/onboarding');}}>
           <FontAwesome name="apple" size={22} color="white" />
           <Button.Label className="text-white font-semibold">{t('AUTH_APPLE')}</Button.Label>
         </Button>

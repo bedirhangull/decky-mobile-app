@@ -35,8 +35,8 @@ export default function Register() {
   });
 
   const onSubmit = (data: RegisterForm) => {
-    // TODO: auth API call
     console.log(data);
+    router.push('/onboarding');
   };
 
   return (
