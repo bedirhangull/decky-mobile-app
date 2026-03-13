@@ -20,7 +20,7 @@ import { PageProvider } from '@/src/components/PageProvider';
 // ─────────────────────────────────────────────────────────────────────────────
 
 type LanguageOption = { code: string; nameKey: string; flag: string };
-type Level = 'beginner' | 'intermediate' | 'advanced';
+type Level = 'words_only' | 'some_phrases' | 'can_sentences' | 'conversations';
 type PreviousApp = 'Duolingo' | 'Preply' | 'Memrise' | 'Anki' | 'Other';
 type InterestOption = { id: string; emoji: string; labelKey: string };
 type OnboardingData = {
@@ -76,11 +76,12 @@ const LANGUAGES: LanguageOption[] = [
   { code: 'ga', nameKey: 'LANG_GA', flag: '🇮🇪' },
 ];
 
-type LevelOption = { id: Level; labelKey: string; subtitle: string };
+type LevelOption = { id: Level; labelKey: string };
 const LEVELS: LevelOption[] = [
-  { id: 'beginner', labelKey: 'ONBOARDING_LEVEL_BEGINNER', subtitle: 'A1–A2' },
-  { id: 'intermediate', labelKey: 'ONBOARDING_LEVEL_INTERMEDIATE', subtitle: 'B1–B2' },
-  { id: 'advanced', labelKey: 'ONBOARDING_LEVEL_ADVANCED', subtitle: 'C1–C2' },
+  { id: 'words_only', labelKey: 'ONBOARDING_LEVEL_WORDS_ONLY' },
+  { id: 'some_phrases', labelKey: 'ONBOARDING_LEVEL_SOME_PHRASES' },
+  { id: 'can_sentences', labelKey: 'ONBOARDING_LEVEL_CAN_SENTENCES' },
+  { id: 'conversations', labelKey: 'ONBOARDING_LEVEL_CONVERSATIONS' },
 ];
 
 const PREVIOUS_APPS: PreviousApp[] = ['Duolingo', 'Preply', 'Memrise', 'Anki', 'Other'];
@@ -706,7 +707,6 @@ export default function Onboarding() {
                 padding: 16,
                 flexDirection: 'row',
                 alignItems: 'center',
-                justifyContent: 'space-between',
                 borderColor: selected ? accentColor : borderColor,
                 backgroundColor: selected ? accentColor + '20' : 'transparent',
               }}
@@ -714,15 +714,16 @@ export default function Onboarding() {
               <Text
                 style={{
                   color: foregroundColor,
-                  fontWeight: '700',
-                  fontSize: 16,
+                  fontWeight: selected ? '700' : '500',
+                  fontSize: 15,
+                  flex: 1,
                 }}
               >
                 {t(lvl.labelKey)}
               </Text>
-              <Text style={{ color: '#6b7280', fontSize: 14, fontWeight: '500' }}>
-                {lvl.subtitle}
-              </Text>
+              {selected && (
+                <Ionicons name="checkmark-circle" size={22} color={accentColor} />
+              )}
             </Pressable>
           );
         })}
@@ -870,18 +871,8 @@ export default function Onboarding() {
           ))}
         </View>
 
-        {/* Social proof card */}
-        <View
-          style={{
-            borderRadius: 20,
-            backgroundColor: accentColor + '14',
-            borderWidth: 1.5,
-            borderColor: accentColor,
-            padding: 24,
-            alignItems: 'center',
-            gap: 8,
-          }}
-        >
+        {/* Same layout as step 3 (users count): avatars + stat text, no card */}
+        <View className="items-center gap-2 py-6">
           <AvatarStack count="50,000+" />
           <Text style={{ fontSize: 15, color: foregroundColor, fontWeight: '600', textAlign: 'center', marginTop: 4 }}>
             {t('ONBOARDING_INTEREST_MATCH_STAT', { language: languageName })}
@@ -1045,14 +1036,14 @@ export default function Onboarding() {
   };
 
   const renderNameInput = () => (
-    <View className="gap-8">
-      <View className="gap-4">
+    <View style={{ flex: 1, justifyContent: 'center', gap: 24 }}>
+      <View className="gap-4 items-center">
         <Text style={{ fontSize: 56 }}>👋</Text>
-        <View className="gap-2">
-          <Text className="text-foreground text-3xl font-bold">
+        <View className="gap-2 items-center">
+          <Text className="text-foreground text-3xl font-bold text-center">
             {t('ONBOARDING_NAME_TITLE')}
           </Text>
-          <Text className="text-muted text-base leading-6">
+          <Text className="text-muted text-base leading-6 text-center">
             {t('ONBOARDING_NAME_DESCRIPTION')}
           </Text>
         </View>
@@ -1076,7 +1067,7 @@ export default function Onboarding() {
       ? t('ONBOARDING_WELCOME_GREETING', { name: data.name.trim() })
       : t('ONBOARDING_WELCOME_GREETING_ANONYMOUS');
     return (
-      <View className="gap-8 items-center" style={{ paddingTop: 40 }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', gap: 24, paddingTop: 40 }}>
         <Text style={{ fontSize: 80 }}>🎉</Text>
         <View className="gap-4 items-center">
           <Text className="text-foreground text-3xl font-bold text-center">

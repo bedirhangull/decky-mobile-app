@@ -1,11 +1,25 @@
+-- FEATURES --
+
 - deck icin style secimi falan yaptir ona gore image olusturabilir
+- ai olacak sifat fiil veya su ingilizcesi vs tarzinda deckler olusturabilir olacak
+- doomscrollingte quiz modu olacak ona gore devam edebilecek vs 
+- create decky with ai 
+- create deck with document
+- create deck with photo
 
 
+-- TODO --
 - paywalls
 - 3 tane daha paywall yapilmasi gerekiyor
-- limited paywall tam olmadi
+- permisson gerekecek onlar icin bottom sheetlerin gelmesi gerek
 
-- x button gelmesi gerekiyor x buttonu sag ust kose veya sol ust lucide react kullan.
-- app of the year degil de best vocublary improving app tarzinda bir sey olabilir.
-- liner gradeienti daha iyi verebiliriz alt kisimla olan baglantisinin bu kadar belirgin olmasina gerek yok daha smooth
-- daha iyi bir ui ux olabilir ama sayfanin alt kismi button ve avatars kismi cok iyi orayi degistirme 
+
+onboardingde limited paywallu gostrmeden once bir user review ekrani gosterecegiz.
+
+
+- vocublary kismi icin 3 stepten olusacak. 
+ 1- kullanici bir deck sececek
+ 2- front yuzunde hangi dil olacagini diger tarafinda hangi dil olacagini secek
+ 3- sonrasinda kullanici saga sola kaydirarak biliyorum veya bilmiyorum tarzind devam edebilecek
+- bunu yapar fakat kullanicin cardlarin arkasini gormesi gerekiyor sanirim oradaki mekanigi sen yapabilirsin bence.
+- bunu yaparken animasyon icin ready to use screen folderi icinde slack kalsorunde componentleri ve sayfalari kullanabilirsin. 

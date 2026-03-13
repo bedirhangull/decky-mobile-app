@@ -3,7 +3,7 @@ import { Image } from "expo-image";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTranslation } from "react-i18next";
-import { Button, Surface } from "heroui-native";
+import { Button } from "heroui-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LibraryBig, Sparkle, Tag, X } from "lucide-react-native"
 import { useEffect, useState, useMemo } from "react";
@@ -44,10 +44,10 @@ export default function LimitedPaywall() {
     ], [t]);
 
     const USERS: User[] = [
-        { id: "1", image: <Image style={{ width: 40, height: 40 }} source={require("@/assets/avatars/avatar1.png")} /> },
-        { id: "2", image: <Image style={{ width: 40, height: 40 }} source={require("@/assets/avatars/avatar2.png")} /> },
-        { id: "3", image: <Image style={{ width: 40, height: 40 }} source={require("@/assets/avatars/avatar3.png")} /> },
-        { id: "4", image: <Image style={{ width: 40, height: 40 }} source={require("@/assets/avatars/avatar4.png")} /> },
+        { id: "1", image: <Image style={{ width: 44, height: 44 }} source={require("@/assets/avatars/avatar1.png")} contentFit="cover" /> },
+        { id: "2", image: <Image style={{ width: 44, height: 44 }} source={require("@/assets/avatars/avatar2.png")} contentFit="cover" /> },
+        { id: "3", image: <Image style={{ width: 44, height: 44 }} source={require("@/assets/avatars/avatar3.png")} contentFit="cover" /> },
+        { id: "4", image: <Image style={{ width: 44, height: 44 }} source={require("@/assets/avatars/avatar4.png")} contentFit="cover" /> },
     ];
 
     const memberCount = useMemo(() => Math.floor(Math.random() * (240 - 100 + 1)) + 100, []);
@@ -138,93 +138,109 @@ export default function LimitedPaywall() {
                     </View>
 
                     {/* Offer and Timer Section */}
-                    <View>
-                        <View>
-                            <Text className="text-3xl font-medium text-center">{t("paywall.one_time_offer")}</Text>
-                            <Text className="text-sm font-medium opacity-50 mt-1 text-center">{t("paywall.unlock_potential")}</Text>
+                    <View className="px-5 pt-6">
+                        <View className="gap-1">
+                            <Text className="text-2xl font-bold text-foreground text-center">
+                                {t("paywall.one_time_offer")}
+                            </Text>
+                            <Text className="text-sm text-muted text-center">
+                                {t("paywall.unlock_potential")}
+                            </Text>
                         </View>
-                        <View className="mt-8">
-                            <Text className="text-3xl font-bold text-accent text-center">{t("paywall.discount_value")}</Text>
-                            <Text className="text-xl font-medium text-muted text-center">{t("paywall.discount_subtitle")}</Text>
-                        </View>
-
-                        {/* Timer Blocks */}
-                        <View className="flex flex-row gap-2 items-center justify-center my-4">
-                            <View className="h-12 w-16 rounded-lg bg-muted/20 items-center flex justify-center">
-                                <Text className="text-xl font-medium text-center">{h}</Text>
-                            </View>
-                            <View className="h-12 w-16 rounded-lg bg-muted/20 items-center flex justify-center">
-                                <Text className="text-xl font-medium text-center">{m}</Text>
-                            </View>
-                            <View className="h-12 w-16 rounded-lg bg-muted/20 items-center flex justify-center">
-                                <Text className="text-xl font-medium text-center">{s}</Text>
-                            </View>
+                        <View className="mt-6 gap-1">
+                            <Text className="text-3xl font-bold text-accent text-center">
+                                {t("paywall.discount_value")}
+                            </Text>
+                            <Text className="text-base text-muted text-center">
+                                {t("paywall.discount_subtitle")}
+                            </Text>
                         </View>
 
-                        {/* Pricing Line */}
-                        <View className="flex-row items-center justify-center">
-                            <Text className="text-lg font-medium mr-1">{t("paywall.only_for")}</Text>
-                            <Text
-                                className="text-lg text-muted font-medium"
-                                style={{ textDecorationLine: "line-through" }}
-                            >
+                        {/* Timer */}
+                        <Text className="text-xs font-medium text-muted text-center mt-6 mb-2">
+                            {t("PAYWALL_TIMER_LABEL")}
+                        </Text>
+                        <View className="flex flex-row gap-2 items-center justify-center">
+                            <View className="h-12 w-14 rounded-xl bg-muted/30 items-center justify-center">
+                                <Text className="text-lg font-semibold text-foreground">{h}</Text>
+                            </View>
+                            <View className="h-12 w-14 rounded-xl bg-muted/30 items-center justify-center">
+                                <Text className="text-lg font-semibold text-foreground">{m}</Text>
+                            </View>
+                            <View className="h-12 w-14 rounded-xl bg-muted/30 items-center justify-center">
+                                <Text className="text-lg font-semibold text-foreground">{s}</Text>
+                            </View>
+                        </View>
+
+                        {/* Pricing */}
+                        <View className="flex-row items-center justify-center gap-2 mt-6 flex-wrap">
+                            <Text className="text-base font-medium text-foreground">{t("paywall.only_for")}</Text>
+                            <Text className="text-base text-muted line-through">
                                 {t("paywall.price_original")}
                             </Text>
-                            <Text className="text-lg font-medium ml-1">
+                            <Text className="text-base font-semibold text-accent">
                                 {t("paywall.price_discounted")}
                             </Text>
                         </View>
 
-                        {/* Features List */}
-                        <View className="mt-4">
+                        {/* Features */}
+                        <View className="mt-8 gap-1">
                             {FEATURE_LIST.map((feature, index) => (
-                                <Surface variant="transparent" key={index} className="flex flex-row gap-4 items-center px-4">
-                                    <View className="h-12 w-12 rounded-xl bg-muted/20 items-center flex justify-center">
+                                <View
+                                    key={index}
+                                    className="flex-row gap-4 items-center py-3"
+                                >
+                                    <View className="h-11 w-11 rounded-xl bg-muted/30 items-center justify-center">
                                         {feature.icon}
                                     </View>
-                                    <View>
-                                        <Text className="font-medium text-lg">{feature.title}</Text>
-                                        <Text className="text-xs opacity-60">{feature.description}</Text>
+                                    <View className="flex-1">
+                                        <Text className="font-semibold text-base text-foreground">
+                                            {feature.title}
+                                        </Text>
+                                        <Text className="text-sm text-muted mt-0.5">
+                                            {feature.description}
+                                        </Text>
                                     </View>
-                                </Surface>
+                                </View>
                             ))}
                         </View>
                     </View>
                 </View>
             </ScrollView>
 
-            {/* Bottom Footer / CTA */}
-            <View className="border-t border-gray-200 pt-2 px-4">
-                <View className="my-4">
-                    <View className="flex-row items-center justify-center mb-2">
+            {/* Bottom Footer / CTA — same pattern as onboarding users count */}
+            <View className="border-t border-border pt-5 pb-6 px-5">
+                <View className="items-center gap-3 mb-4">
+                    <View className="flex-row items-center justify-center">
                         {USERS.map((user, index) => (
                             <View
                                 key={user.id}
                                 style={{
-                                    marginLeft: index === 0 ? 0 : -16,
+                                    marginLeft: index === 0 ? 0 : -12,
                                     zIndex: USERS.length - index,
-                                    borderWidth: 3,
-                                    borderColor: "#fffaf5"
+                                    borderWidth: 2.5,
+                                    borderColor: "var(--background, #fbfcfa)",
                                 }}
-                                className="w-12 h-12 rounded-full overflow-hidden bg-gray-200"
+                                className="w-11 h-11 rounded-full overflow-hidden bg-muted"
                             >
                                 {user.image}
                             </View>
                         ))}
                     </View>
-
-                    <Text className="text-lg text-center font-medium">
+                    <Text className="text-sm text-muted text-center">
                         {t("paywall.social_proof", { count: memberCount })}
                     </Text>
-
-                    <Button
-                        onPress={purchasePaywall}
-                        className="mt-4" size="lg">
-                        <Button.Label className="font-bold">
-                            {t("paywall.cta_button")}
-                        </Button.Label>
-                    </Button>
                 </View>
+
+                <Button
+                    onPress={purchasePaywall}
+                    className="w-full bg-accent"
+                    size="lg"
+                >
+                    <Button.Label className="font-bold text-accent-foreground">
+                        {t("paywall.cta_button")}
+                    </Button.Label>
+                </Button>
             </View>
         </PageProvider>
     );

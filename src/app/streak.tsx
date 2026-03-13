@@ -77,7 +77,7 @@ export default function Streak() {
     ).start();
 
     const navTimer = setTimeout(() => {
-      router.replace('/(tabs)');
+      router.replace('/(tabs)/feed');
     }, 5000);
 
     return () => clearTimeout(navTimer);
@@ -236,7 +236,7 @@ export default function Streak() {
 
             <FadeSlide delay={1100} style={{ width: '100%' }}>
               <Pressable
-                onPress={() => router.replace('/(tabs)')}
+                onPress={() => router.replace('/(tabs)/feed')}
                 style={({ pressed }) => ({
                   backgroundColor: ACCENT,
                   borderRadius: 14,

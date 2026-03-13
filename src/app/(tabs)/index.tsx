@@ -1,4 +1,4 @@
-import { useRef, useCallback } from 'react';
+import { useRef } from 'react';
 import { Dimensions, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card } from 'heroui-native';
@@ -13,8 +13,6 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated';
-import { useFocusEffect } from 'expo-router';
-
 // ── Layout constants ───────────────────────────────────────────────────────────
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const H_PADDING = 16;       // matches PageProvider px-4
@@ -240,32 +238,14 @@ function PodcastCard({
 export default function HomeTab() {
   const { t } = useTranslation();
 
-  // Scroll ref for nudge animation
   const scrollRef = useRef<ScrollView>(null);
 
-  // Shared scroll value drives per-card scale animation
   const podcastScrollX = useSharedValue(0);
   const podcastScrollHandler = useAnimatedScrollHandler({
     onScroll: (e) => {
       podcastScrollX.set(e.contentOffset.x);
     },
   });
-
-  // Nudge scroll on focus — hints the user there is more content below
-  useFocusEffect(
-    useCallback(() => {
-      const t1 = setTimeout(() => {
-        scrollRef.current?.scrollTo({ y: 120, animated: true });
-      }, 400);
-      const t2 = setTimeout(() => {
-        scrollRef.current?.scrollTo({ y: 0, animated: true });
-      }, 1000);
-      return () => {
-        clearTimeout(t1);
-        clearTimeout(t2);
-      };
-    }, [])
-  );
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fbfcfa' }}>
